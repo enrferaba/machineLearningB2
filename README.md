@@ -8,9 +8,9 @@ Este repositorio contiene un cuaderno sencillo que sigue la teoría básica del 
 - `B2/b2_first_steps.ipynb`: cuaderno Jupyter (formato `.ipynb`) donde, paso a paso, se muestra cómo:
   1. Cargar el archivo CSV compartido en clase.
   2. Calcular estadísticas descriptivas básicas (mínimo, máximo y media) para cada característica.
-  3. Separar las muestras en entrenamiento y prueba para evaluar honestamente.
+  3. Separar las muestras en entrenamiento y prueba usando la semilla fija 90 que indicó el profesor para evaluar honestamente.
   4. Implementar un clasificador k-vecinos más cercanos (k-NN) solo con Python estándar.
-  5. Medir la exactitud y hacer una predicción manual de ejemplo.
+  5. Medir la exactitud, construir una matriz de confusión (filas = predicciones, columnas = reales) y hacer una predicción manual de ejemplo.
 
 El tono de los comentarios es el de un estudiante novato que explica cada decisión con palabras sencillas.
 
