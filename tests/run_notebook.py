@@ -1,4 +1,4 @@
-"""Execute the B2 notebook with pure Python to verify it runs without external dependencies."""
+"""Execute the practice notebook with pure Python to verify it runs without external dependencies."""
 from __future__ import annotations
 
 import json
@@ -22,7 +22,7 @@ def execute_notebook(path: Path) -> None:
             raise RuntimeError(f"Error while executing cell {index}: {exc}") from exc
 
 
-DEFAULT_NOTEBOOK = Path(__file__).parents[1] / "B2" / "b2_first_steps.ipynb"
+DEFAULT_NOTEBOOK = Path(__file__).parents[1] / "b2_first_steps.ipynb"
 
 
 def main(args: list[str]) -> int:
