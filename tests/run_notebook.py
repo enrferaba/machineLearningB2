@@ -1,4 +1,4 @@
-"""Execute the practice notebook with pure Python to verify it runs without external dependencies."""
+"""Execute the notebooks with pure Python to verify they run without external dependencies."""
 from __future__ import annotations
 
 import json
@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 def execute_notebook(path: Path) -> None:
-    nb = json.loads(path.read_text())
+    nb = json.loads(path.read_text(encoding="utf-8"))
     namespace: dict[str, object] = {"__name__": "__main__"}
     for index, cell in enumerate(nb.get("cells", [])):
         if cell.get("cell_type") != "code":
@@ -16,19 +16,22 @@ def execute_notebook(path: Path) -> None:
         if not source.strip():
             continue
         try:
-            compiled = compile(source, f"notebook_cell_{index}", "exec")
+            compiled = compile(source, f"{path.name}_cell_{index}", "exec")
             exec(compiled, namespace)
         except Exception as exc:  # pragma: no cover - troubleshooting helper
-            raise RuntimeError(f"Error while executing cell {index}: {exc}") from exc
+            raise RuntimeError(f"Error while executing {path.name} cell {index}: {exc}") from exc
 
 
-DEFAULT_NOTEBOOK = Path(__file__).parents[1] / "b2_first_steps.ipynb"
+DEFAULT_NOTEBOOKS = [
+    Path(__file__).parents[1] / "Machine Learning 1" / "b2_python_practice.ipynb",
+]
 
 
 def main(args: list[str]) -> int:
-    target = Path(args[0]) if args else DEFAULT_NOTEBOOK
-    execute_notebook(target)
-    print("Notebook executed successfully.")
+    targets = [Path(arg) for arg in args] if args else DEFAULT_NOTEBOOKS
+    for notebook in targets:
+        execute_notebook(notebook)
+        print(f"Executed {notebook.name} successfully.")
     return 0
 
 
