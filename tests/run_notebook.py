@@ -23,7 +23,7 @@ def execute_notebook(path: Path) -> None:
 
 
 DEFAULT_NOTEBOOKS = [
-    Path(__file__).parents[1] / "Machine Learning 1" / "b2_python_practice.ipynb",
+    Path(__file__).parents[1] / "Machine Learning 1" / "b2" / "b2_python.ipynb",
 ]
 
 
